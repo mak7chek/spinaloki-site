@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Контакти - ЛДЦ "СпиналоКі"</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+    <div class="container header__container">
+        <a href="/" class="logo">ЛДЦ "СпиналоКі"</a>
+        <nav class="nav">
+            <a href="/services.html">Послуги та Ціни</a>
+            <a href="/doctors.html">Лікарі</a>
+            <a href="/contacts.html" class="active">Контакти</a>
+        </nav>
+        <a href="tel:+380990000000" class="phone-btn">+38 (099) 000-00-00</a>
+    </div>
+</header>
+
+<section class="section contacts">
+    <div class="container">
+        <h1 class="section-title">Як нас знайти</h1>
+
+        <div class="contacts-wrapper">
+            <div class="contacts-info">
+                <div class="contact-item">
+                    <h3>📍 Адреса:</h3>
+                    <p>м. Харків, [Встав сюди точну вулицю]</p>
+                </div>
+                <div class="contact-item">
+                    <h3>📞 Телефони:</h3>
+                    <p><a href="tel:+380990000000">+38 (099) 000-00-00</a></p>
+                </div>
+                <div class="contact-item">
+                    <h3>🕒 Графік роботи:</h3>
+                    <p>Пн-Пт: 09:00 - 18:00</p>
+                    <p>Сб-Нд: Вихідний</p>
+                </div>
+
+                <a href="tel:+380990000000" class="btn btn--green" style="margin-top: 20px;">Зателефонувати нам</a>
+            </div>
+
+            <div class="contacts-map">
+                <!-- Зайди на Google Maps, знайди адресу, натисни "Поділитись" -> "Вставити карту" і скопіюй код iframe сюди -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d164153.5984324294!2d36.10603448686226!3d49.99450702720539!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4127a09f63ab0f8b%3A0x2d4c18681aa4be0a!2z0KXQsNGA0LrRltCyLCDQpdCw0YDQutGW0LLRgdGM0LrQsCDQvtCx0LvQsNGB0YLRjA!5e0!3m2!1suk!2sua!4v1700000000000!5m2!1suk!2sua" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2025 ЛДЦ "СпиналоКі".</p>
+    </div>
+</footer>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
+```
+
+### Що треба додати в `style.scss` (для Головної)
+Додай в кінець свого `style.scss` ці стилі, щоб нова Головна сторінка виглядала гарно:
+
+```scss
+/* Додаткові стилі для Головної */
+.hero-buttons {
+display: flex;
+gap: 15px;
+margin-top: 30px;
+}
+.btn--outline {
+border: 2px solid white;
+color: white;
+}
+.btn--outline:hover {
+background: white;
+color: var(--color-primary);
+}
+
+/* Блок "Про нас" */
+.features-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 30px;
+margin-top: 40px;
+}
+.feature-item {
+text-align: center;
+padding: 20px;
+background: white;
+border-radius: var(--radius-card);
+box-shadow: var(--shadow-card);
+}
+.feature-item h3 {
+color: var(--color-primary);
+margin-bottom: 15px;
+}
+
+/* Меню */
+.nav .active {
+color: var(--color-primary);
+border-bottom: 2px solid var(--color-primary);
+}

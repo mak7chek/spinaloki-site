@@ -1,13 +1,80 @@
 <!doctype html>
-<html lang="en">
-  <head>
+<html lang="uk">
+<head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spinaloki-site</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+    <title>ЛДЦ "СпиналоКі" - Клініка здоров'я спини</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ХЕДЕР (Спільний для всіх сторінок) -->
+<header class="header">
+    <div class="container header__container">
+        <a href="/" class="logo">ЛДЦ "СпиналоКі"</a>
+        <nav class="nav">
+            <!-- Зверни увагу: посилання тепер ведуть на файли -->
+            <a href="/services.html">Послуги та Ціни</a>
+            <a href="/doctors.html">Лікарі</a>
+            <a href="/contacts.html">Контакти</a>
+        </nav>
+        <a href="tel:+380990000000" class="phone-btn">+38 (099) 000-00-00</a>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <h1>Повернемо радість руху без болю</h1>
+        <p>Спеціалізований центр лікування хребта та нервової системи. Досвід роботи з 1993 року.</p>
+        <div class="hero-buttons">
+            <a href="/contacts.html" class="btn btn--primary">Записатись на прийом</a>
+            <a href="/services.html" class="btn btn--outline">Дивитись ціни</a>
+        </div>
+    </div>
+</section>
+
+<!-- БЛОК "ПРО НАС" (Тільки на головній) -->
+<section class="section about">
+    <div class="container">
+        <h2 class="section-title">Чому обирають "СпиналоКі"?</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <h3>👨‍⚕️ Досвідчені лікарі</h3>
+                <p>Прийом веде кандидат медичних наук, лікар вищої категорії зі стажем понад 30 років.</p>
+            </div>
+            <div class="feature-item">
+                <h3>🏥 Комплексний підхід</h3>
+                <p>Поєднуємо медикаментозне лікування, блокади, мануальну терапію та денний стаціонар.</p>
+            </div>
+            <div class="feature-item">
+                <h3>💉 Ефективні методи</h3>
+                <p>Використовуємо сучасні протоколи лікування больових синдромів та захворювань нервової системи.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ТИЗЕР ПОСЛУГ -->
+<section class="section bg-light">
+    <div class="container" style="text-align: center;">
+        <h2 class="section-title">Ми лікуємо</h2>
+        <p style="max-width: 700px; margin: 0 auto 30px;">
+            Захворювання хребта, головні болі, грижі, наслідки інсультів та травм. Ми пропонуємо прозорі ціни та індивідуальні схеми лікування.
+        </p>
+        <a href="/services.html" class="btn btn--green">Переглянути всі послуги</a>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2025 ЛДЦ "СпиналоКі". Ліцензія МОЗ №...</p>
+    </div>
+</footer>
+
+<script type="module" src="/src/main.js"></script>
+</body>
 </html>

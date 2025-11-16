@@ -1,0 +1,108 @@
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-primary: #005a9c; /* Професійний синій для кнопок, посилань */
+  --color-text: #333333; /* Основний текст */
+  --color-text-light: #757575; /* Вторинний текст (описи, стаж лікаря) */
+  --color-bg-light: #f9f9f9; /* Світлий фон для секцій (щоб чергувати) */
+  --color-white: #ffffff;
+  --color-border: #e0e0e0; /* Колір рамок */
+
+  --font-main: 'Roboto', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-headings: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  --font-size-base: 16px;
+  --line-height-base: 1.6;
+
+  /* Компоненти */
+  --container-width: 1140px;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* --- 3. Базові стилі для всього сайту --- */
+body {
+  font-family: var(--font-main);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+  background-color: var(--color-white);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+a:hover {
+  opacity: 0.8;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headings);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.75em;
+}
+
+img, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  max-width: var(--container-width);
+  width: 90%; /* Для мобільних */
+  margin: 0 auto; /* Центрування */
+}
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+.btn--outline {
+  border: 2px solid white;
+  color: white;
+}
+.btn--outline:hover {
+  background: white;
+  color: var(--color-primary);
+}
+
+/* Блок "Про нас" */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+.feature-item {
+  text-align: center;
+  padding: 20px;
+  background: white;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+.feature-item h3 {
+  color: var(--color-primary);
+  margin-bottom: 15px;
+}
+
+/* Меню */
+.nav .active {
+  color: var(--color-primary);
+  border-bottom: 2px solid var(--color-primary);
+}
