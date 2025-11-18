@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Послуги та Ціни - ЛДЦ "СпиналоКі"</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<load src="partials/header.html"/>
+
+<section class="section services-section">
+    <div class="container">
+        <h1 class="section-title">Вартість лікування</h1>
+
+        <div class="programs-grid">
+
+            <div class="program-card">
+                <div class="program-card__header">
+                    <span class="program-tag">Повний курс</span>
+                    <h3>Амбулаторне лікування</h3>
+                    <div class="program-price">16 858 <span>грн</span></div>
+                </div>
+                <div class="program-card__body">
+                    <p>Максимально ефективний курс для відновлення функцій хребта.</p>
+                    <ul class="program-list">
+                        <li>Денний стаціонар</li>
+                        <li>Тракційна терапія (витягування)</li>
+                        <li>Комплекс аналізів (Synevo)</li>
+                        <li>Мануальна терапія</li>
+                        <li>Блокади тригерних зон</li>
+                    </ul>
+                    <a href="/contacts.html" class="btn btn--green btn--full">Записатися на курс</a>
+                </div>
+            </div>
+
+            <div class="program-card program-card--urgent">
+                <div class="program-card__header">
+                    <span class="program-tag red">Гострий біль</span>
+                    <h3>Курс "Виражений больовий синдром"</h3>
+                    <div class="program-price">15 984 <span>грн</span></div>
+                </div>
+                <div class="program-card__body">
+                    <p>Інтенсивна терапія для швидкого зняття гострого болю та запалення (10-12 днів).</p>
+                    <ul class="program-list">
+                        <li>Лікувальні блокади (3-5 процедур)</li>
+                        <li>Інфузії судинних препаратів та мінералів</li>
+                        <li>Ін'єкції нестероїдних препаратів та анальгетиків</li>
+                        <li>Комплекс аналізів (Synevo)</li>
+                    </ul>
+                    <a href="/contacts.html" class="btn btn--green btn--full">Зняти біль</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="price-list-wrapper">
+            <h2 style="text-align: center; margin: 60px 0 30px;">Окремі процедури та консультації</h2>
+
+            <div class="accordion">
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="accordion-title">Первинна консультація + Терапія</span>
+                        <span class="accordion-price">580 грн</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            Включає огляд лікаря, проведення елементарної мануальної терапії та індивідуальний підбір медикаментів для амбулаторного лікування.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="accordion-title">Лікувальні блокади</span>
+                        <span class="accordion-price">1 879 грн</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            Локальне введення препаратів у вогнище болю. Найшвидший спосіб зняти гострий больовий синдром та запалення.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="accordion-title">Тракційна терапія + Стаціонар</span>
+                        <span class="accordion-price">1 893 грн</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            Комплексний сеанс: апаратне витягування хребта спільно з послугою денного стаціонару (крапельниці/нагляд).
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="accordion-title">Денний стаціонар (Базовий)</span>
+                        <span class="accordion-price">1 256 грн</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            Включає постановку крапельниць, внутрішньовенні ін'єкції та перебування у палаті під наглядом медперсоналу.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="accordion-title">Денний стаціонар (Вузькопрофільний)</span>
+                        <span class="accordion-price">2000 - 6000 грн</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            Використання препаратів вузькопрофільного призначення (вартість залежить від обраних медикаментів та дозування).
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+<load src="partials/footer.html"/>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

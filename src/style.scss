@@ -1,108 +1,849 @@
+/* ========================================================================
+   1. БАЗОВА ДИЗАЙН-СИСТЕМА (ЗМІННІ)
+   ======================================================================== */
+:root {
+  /* --- КОЛЬОРИ --- */
+  --color-bg-body: #FFFFFF;    /* Основний фон сторінки */
+  --color-white: #ffffff;
+  --color-text-main: #2D2D2D;  /* Основний текст */
+  --color-text-light: #666666; /* Другорядний текст */
 
-*,
-*::before,
-*::after {
+  --color-green: #7CB518;      /* Головний акцент (кнопки, посилання) */
+  --color-green-hover: #6da015;
+
+  /* --- ШРИФТИ --- */
+  --font-main: 'Roboto', sans-serif;
+  --font-heading: 'Montserrat', sans-serif;
+
+  /* --- РОЗМІРИ ТА ДЕКОР --- */
+  --radius-card: 20px;
+  --radius-btn: 10px;
+  --shadow-card: 0 15px 40px rgba(0, 0, 0, 0.05);
+
+  --container-width: 1200px;
+  --line-height-base: 1.6;
+}
+
+/* ========================================================================
+   2. ГЛОБАЛЬНИЙ СКИДАННЯ (RESET) ТА БАЗОВІ ТЕГИ
+   ======================================================================== */
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-:root {
-  --color-primary: #005a9c; /* Професійний синій для кнопок, посилань */
-  --color-text: #333333; /* Основний текст */
-  --color-text-light: #757575; /* Вторинний текст (описи, стаж лікаря) */
-  --color-bg-light: #f9f9f9; /* Світлий фон для секцій (щоб чергувати) */
-  --color-white: #ffffff;
-  --color-border: #e0e0e0; /* Колір рамок */
-
-  --font-main: 'Roboto', system-ui, Avenir, Helvetica, Arial, sans-serif;
-  --font-headings: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
-
-  --font-size-base: 16px;
-  --line-height-base: 1.6;
-
-  /* Компоненти */
-  --container-width: 1140px;
-  --border-radius: 8px;
-  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-/* --- 3. Базові стилі для всього сайту --- */
 body {
   font-family: var(--font-main);
-  font-size: var(--font-size-base);
+  background-color: var(--color-bg-body);
+  color: var(--color-text-main);
   line-height: var(--line-height-base);
-  color: var(--color-text);
-  background-color: var(--color-white);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-a {
-  color: var(--color-primary);
-  text-decoration: none;
-  transition: opacity 0.2s;
-}
-a:hover {
-  opacity: 0.8;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-headings);
-  font-weight: 700;
+/* Глобальні стилі для тексту */
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: 900;
   line-height: 1.2;
-  margin-bottom: 0.75em;
+  margin-bottom: 20px;
 }
 
-img, svg {
-  max-width: 100%;
-  height: auto;
+.section { padding: 80px 0; }
+
+.section-title {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+/* Посилання */
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+a:hover { opacity: 0.8; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+.container {
+  max-width: var(--container-width);
+  width: 90%;
+  margin: 0 auto;
+}
+
+
+/* ========================================================================
+   3. КОМПОНЕНТИ (Кнопки)
+   ======================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 35px;
+  border-radius: var(--radius-btn);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btn--green {
+  background-color: var(--color-green);
+  color: var(--color-white);
+  box-shadow: 0 5px 15px rgba(124, 181, 24, 0.3);
+}
+
+.btn--green:hover {
+  background-color: var(--color-green-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(124, 181, 24, 0.4);
+}
+
+.btn--outline {
+  background: transparent;
+  border: 2px solid var(--color-text-main);
+  color: var(--color-text-main);
+}
+
+.btn--outline:hover {
+  background: var(--color-text-main);
+  color: var(--color-white);
+}
+
+
+/* ========================================================================
+   4. ХЕДЕР (Лого, Навігація, Sticky)
+   ======================================================================== */
+.header {
+  padding: 15px 0;
+  background-color: rgba(255, 255, 255, 0.98); /* Майже білий */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+
+  transition: all 0.3s ease;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* --- ЛОГОТИП (Картинка + Текст) --- */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+}
+
+.logo__icon {
+  display: block;
+  height: 45px; /* Висота іконки */
+  width: auto;
+}
+
+/* !!! ВИПРАВЛЕНО !!! Додано КРАПКУ перед logo__text */
+.logo__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.logo__subtitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-light);
+  letter-spacing: 1px;
+}
+
+.logo__title {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-text-main);
+}
+
+/* Навігація */
+.nav {
+  display: flex;
+  gap: 30px;
+}
+
+.nav a {
+  font-weight: 600;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 5px 0;
+  position: relative;
+  color: var(--color-text-main);
+}
+
+.nav a::after { /* Анімація підкреслення */
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--color-green);
+  transition: width 0.3s ease;
+}
+
+.nav a:hover::after, .nav a.active::after { width: 100%; }
+.nav a:hover, .nav a.active { color: var(--color-green); }
+
+/* Контакти */
+.header__contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.work-time {
+  font-size: 12px;
+  color: var(--color-text-light);
+  margin-bottom: 2px;
+}
+
+.phone-btn {
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--color-text-main);
+  transition: color 0.3s;
+}
+
+.phone-btn:hover { color: var(--color-green); }
+
+
+/* ========================================================================
+   5. HERO SECTION
+   ======================================================================== */
+.hero { padding: 60px 0 100px; }
+
+.hero__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.hero__content h1 { font-size: 48px; margin-bottom: 20px; }
+.hero__subtitle {
+  font-size: 18px;
+  color: var(--color-text-light);
+  margin-bottom: 40px;
+  max-width: 500px;
+}
+.hero__features li {
+  margin-bottom: 15px;
+  padding-left: 30px;
+  position: relative;
+  font-weight: 500;
+}
+.hero__features li::before {
+  content: '✔';
+  color: var(--color-green);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Фото + Картка */
+.hero__visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.hero__image-wrapper {
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 8px solid rgba(255, 255, 255, 0.6);
+  box-shadow: var(--shadow-card);
+}
+
+.hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%; /* Піднімаємо голову */
+}
+
+.stats-card {
+  position: absolute;
+  bottom: 30px;
+  right: 10px;
+  background: var(--color-white);
+  padding: 20px;
+  border-radius: var(--radius-card);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  text-align: center;
+  min-width: 260px;
+}
+
+.stats-number {
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--color-green);
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.stats-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+
+/* ========================================================================
+   6. СЕКЦІЯ "ПІДХІД"
+   ======================================================================== */
+.principles-section {
+  padding-top: 50px;
+}
+.section-title {
+  margin-bottom: 70px;
+}
+
+.principle-card {
+  background: var(--color-white);
+  /* Використовуємо flex для чергування */
+  display: flex;
+  gap: 40px;
+  align-items: center;
+
+  /* Великі, виділені картки */
+  margin-bottom: 50px;
+  padding: 30px;
+  border-radius: var(--radius-card);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); /* Більш виразна тінь */
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.principle-card:hover {
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25); /* Тінь темніша при наведенні */
+}
+
+.principle-card__content {
+  flex: 1; /* Займає стільки місця, скільки потрібно */
+  padding: 20px 0;
+}
+
+.principle-card__visual {
+  flex: 1.2; /* Фото займає трохи більше місця, ніж текст */
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  height: 350px;
+}
+
+.principle-card__visual img {
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* Ефект при наведенні на картку */
+.principle-card:hover .principle-card__visual img {
+  transform: scale(1.05); /* Легке збільшення фото */
+}
+
+/* Стилізація контенту */
+.step-number {
+  font-size: 60px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  color: #E6E6E6;
+  opacity: 1;
+  line-height: 1;
+  margin-bottom: 15px;
   display: block;
 }
 
-.container {
-  max-width: var(--container-width);
-  width: 90%; /* Для мобільних */
-  margin: 0 auto; /* Центрування */
-}
-.hero-buttons {
-  display: flex;
-  gap: 15px;
-  margin-top: 30px;
-}
-.btn--outline {
-  border: 2px solid white;
-  color: white;
-}
-.btn--outline:hover {
-  background: white;
-  color: var(--color-primary);
+.principle-card__content h3 {
+  font-size: 30px;
+  color: var(--color-text-main);
+  margin-top: -10px;
 }
 
-/* Блок "Про нас" */
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  margin-top: 40px;
+.accent-line { /* Зелена лінія під заголовком */
+  width: 60px;
+  height: 3px;
+  background-color: var(--color-green);
+  margin-bottom: 25px;
+  border-radius: 2px;
 }
-.feature-item {
-  text-align: center;
-  padding: 20px;
-  background: white;
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-card);
-}
-.feature-item h3 {
-  color: var(--color-primary);
+
+.principle-card__content p {
+  color: var(--color-text-light);
   margin-bottom: 15px;
 }
 
-/* Меню */
-.nav .active {
-  color: var(--color-primary);
-  border-bottom: 2px solid var(--color-primary);
+.check-list {
+  margin-top: 15px;
+}
+
+.check-list li {
+  padding-left: 20px;
+  position: relative;
+  font-size: 15px;
+  color: var(--color-text-main);
+}
+.check-list li::before {
+  content: '→'; /* Замість галочки */
+  color: var(--color-green);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+/* --- ЧЕРГУВАННЯ: (Фото ЗЛІВА) --- */
+.principle-card--reversed {
+  flex-direction: row-reverse;
+}
+
+/* --- АДАПТИВНІСТЬ --- */
+@media (max-width: 900px) {
+  .principle-card {
+    flex-direction: column; /* Все в один стовпець */
+  }
+  .principle-card--reversed {
+    flex-direction: column; /* Зберігаємо порядок для мобільного */
+  }
+  .principle-card__content {
+    order: 2; /* Контент після фото */
+    padding-top: 20px;
+  }
+  .principle-card__visual {
+    order: 1; /* Фото до контенту */
+  }
+}
+.gallery-section {
+  padding-top: 50px; /* Зменшуємо відступ зверху, щоб не був "завеликий" */
+}
+
+/* Стилізація блоку заголовка (щоб прибрати "текст без стилю") */
+.section-header {
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto 40px;
+}
+.section-subtitle {
+  font-size: 18px;
+  color: var(--color-text-light);
+  line-height: 1.5;
+  margin-top: 15px;
+}
+
+
+.carousel-wrapper {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: var(--radius-card);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); /* Більш виразна тінь */
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.carousel-container {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.carousel-item {
+  flex: 0 0 100%;
+  position: relative;
+  height: 550px; /* Фіксована висота для охайності */
+  display: flex; /* Для центрування контенту, якщо немає фото */
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  color: var(--color-white);
+  text-align: center;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Навігаційні кнопки */
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  /* Новий, красивий стиль */
+  background: var(--color-green);
+  color: var(--color-white);
+  border: none;
+  font-size: 20px;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s;
+  border-radius: var(--radius-btn);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-nav:hover {
+  background: var(--color-green-hover);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.carousel-nav.prev { left: 20px; }
+.carousel-nav.next { right: 20px; }
+
+.carousel-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  background: var(--color-text-main); /* Темний, майже чорний фон */
+  color: var(--color-white);
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: left; /* Вирівнювання тексту вліво */
+  line-height: 1.3;
+
+  border-bottom-left-radius: var(--radius-card);
+  border-bottom-right-radius: var(--radius-card);
+}
+
+/* Індикатори */
+.carousel-indicators {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.indicator.active {
+  background-color: var(--color-green);
+  border: 3px solid var(--color-white);
+  transform: scale(1.1);
+}
+/* ========================================================================
+   14. СЕКЦІЯ ЦІН (PROGRAMS & ACCORDION)
+   ======================================================================== */
+
+/* --- 1. КАРТКИ ПРОГРАМ (Великі курси) --- */
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.program-card {
+  background: var(--color-white);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.program-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  border-color: var(--color-green);
+}
+
+.program-card__header {
+  background: var(--color-bg-body); /* Трохи сірий фон для шапки */
+  padding: 30px;
+  text-align: center;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.program-tag {
+  display: inline-block;
+  background: var(--color-green);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+.program-tag.red { background: #e63946; } /* Червоний для гострого болю */
+
+.program-card h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  min-height: 50px; /* Щоб вирівняти заголовки */
+}
+
+.program-price {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--color-text-main);
+}
+.program-price span {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-text-light);
+}
+
+.program-card__body {
+  padding: 30px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.program-list {
+  margin: 20px 0 30px;
+  flex-grow: 1;
+}
+
+.program-list li {
+  margin-bottom: 12px;
+  padding-left: 25px;
+  position: relative;
+  font-size: 15px;
+  color: var(--color-text-main);
+}
+
+.program-list li::before {
+  content: '✔';
+  color: var(--color-green);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.btn--full {
+  width: 100%;
+  text-align: center;
+}
+
+
+/* --- 2. АКОРДЕОН (Список процедур) --- */
+.price-list-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.accordion-item {
+  background: var(--color-white);
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.accordion-header {
+  width: 100%;
+  padding: 20px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.3s;
+}
+
+.accordion-header:hover {
+  background: #f9f9f9;
+}
+
+.accordion-title {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-text-main);
+  flex-grow: 1;
+  padding-right: 20px;
+}
+
+.accordion-price {
+  font-weight: 700;
+  color: var(--color-green);
+  font-size: 18px;
+  white-space: nowrap;
+  margin-right: 20px;
+}
+
+.accordion-icon {
+  font-size: 24px;
+  color: var(--color-text-light);
+  transition: transform 0.3s ease;
+}
+
+/* Стан, коли відкрито */
+.accordion-item.active .accordion-icon {
+  transform: rotate(45deg); /* Перетворюємо плюс на хрестик */
+  color: var(--color-green);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  background: #fafafa;
+}
+
+.accordion-body {
+  padding: 20px 25px;
+  font-size: 15px;
+  color: var(--color-text-light);
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Адаптив для акордеону */
+@media (max-width: 600px) {
+  .accordion-header {
+    flex-wrap: wrap;
+  }
+  .accordion-price {
+    width: 100%;
+    margin-top: 5px;
+    order: 3; /* Переносимо ціну під назву */
+    color: var(--color-text-main); /* Робимо темнішою */
+  }
+  .accordion-icon {
+    order: 2;
+  }
+}
+/* ========================================================================
+   10. ПРОФІЛЬ ЛІКАРЯ
+   ======================================================================== */
+.doctor-hero { padding-top: 60px; background-color: var(--color-bg-body); }
+.doctor-hero__container { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; }
+
+.doctor-image-frame { border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); border: 5px solid var(--color-white); }
+.doctor-image-frame img { width: 100%; height: auto; display: block; }
+
+.experience-badge {
+  position: absolute; bottom: -20px; right: -20px;
+  background: var(--color-green); color: var(--color-white);
+  padding: 20px 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(124, 181, 24, 0.4);
+  text-align: center;
+}
+.experience-badge .years { display: block; font-size: 32px; font-weight: 800; line-height: 1; }
+.experience-badge .text { font-size: 14px; text-transform: uppercase; }
+
+.doctor-role { display: inline-block; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: var(--color-green); font-weight: 700; margin-bottom: 15px; }
+.doctor-name { font-size: 48px; line-height: 1.1; margin-bottom: 25px; color: var(--color-text-main); }
+
+.doctor-regalia { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+.regalia-item { background: var(--color-white); padding: 8px 15px; border-radius: 50px; font-size: 14px; font-weight: 500; border: 1px solid rgba(0,0,0,0.05); }
+.doctor-bio { font-size: 18px; line-height: 1.7; color: var(--color-text-light); margin-bottom: 40px; }
+
+.details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+.detail-card { background: var(--color-white); padding: 40px; border-radius: var(--radius-card); box-shadow: var(--shadow-card); }
+.detail-card h3 { font-size: 24px; margin-bottom: 25px; border-bottom: 2px solid var(--color-bg-body); padding-bottom: 15px; }
+.detail-list li { margin-bottom: 15px; position: relative; padding-left: 25px; font-size: 16px; }
+.detail-list li::before { content: '•'; color: var(--color-green); font-size: 24px; position: absolute; left: 0; top: -5px; }
+
+.doctor-quote {
+  text-align: center; max-width: 800px; margin: 0 auto; padding: 40px;
+  background: linear-gradient(135deg, #f9f9f9 0%, #f0f0f0 100%); border-radius: var(--radius-card);
+}
+.doctor-quote blockquote { font-size: 22px; font-style: italic; color: var(--color-text-main); margin-bottom: 20px; }
+.doctor-quote cite { font-weight: 700; color: var(--color-green); font-style: normal; }
+
+
+
+
+.contacts-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 40px;
+}
+.contact-box {
+  background: var(--color-white);
+  padding: 40px;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+.contact-row { margin-bottom: 30px; }
+.contact-row h4 { font-size: 14px; text-transform: uppercase; color: var(--color-text-light); margin-bottom: 5px; }
+.contact-row p { font-size: 18px; font-weight: 500; }
+
+.map-frame {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.footer {
+  text-align: center;
+  padding: 40px 0;
+  color: var(--color-text-light);
+  font-size: 14px;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+
+/* ========================================================================
+   10. АДАПТИВНІСТЬ (MEDIA QUERIES)
+   ======================================================================== */
+@media (max-width: 900px) {
+  .hero__container { grid-template-columns: 1fr; text-align: center; }
+  .hero__visual { margin-top: 40px; }
+  .stats-card { right: 50%; transform: translateX(50%); bottom: -30px; }
+
+  .header__container { flex-direction: column; gap: 15px; }
+  .nav { width: 100%; justify-content: center; gap: 20px; font-size: 14px; }
+
+  .principle-card { flex-direction: column; min-height: auto; }
+  .principle-card--reversed { flex-direction: column; }
+  .principle-card__content { order: 2; padding-top: 20px; }
+  .principle-card__visual { order: 1; height: 250px; }
+
+  .doctor-hero__container { grid-template-columns: 1fr; text-align: center; }
+  .doctor-image-frame { max-width: 400px; margin: 0 auto; }
+  .experience-badge { right: 10%; }
+  .details-grid { grid-template-columns: 1fr; }
+
+  .trust-banner__card { grid-template-columns: 1fr; }
+  .trust-banner__visual { order: -1; margin-bottom: 20px; }
+
+  .contacts-wrapper { grid-template-columns: 1fr; }
+
+  .accordion-header { flex-wrap: wrap; }
+  .accordion-price { width: 100%; margin-top: 5px; order: 3; }
 }
