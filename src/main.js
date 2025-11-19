@@ -47,10 +47,21 @@ document.addEventListener('DOMContentLoaded', () => {
             if (header && content) {
                 header.addEventListener('click', () => {
                     acc.classList.toggle('active');
+
                     if (acc.classList.contains('active')) {
-                        content.style.maxHeight = content.scrollHeight + "px";
+                        // ВИПРАВЛЕННЯ: Додаємо +20px (або 30px) про запас,
+                        // щоб нижній рядок тексту не обрізався
+                        content.style.maxHeight = (content.scrollHeight + 30) + "px";
                     } else {
                         content.style.maxHeight = null;
+                    }
+                });
+
+                // ЛАЙФХАК: Оновлюємо висоту при зміні розміру вікна (повороті телефону),
+                // інакше текст може знову обрізатись, якщо стане довшим
+                window.addEventListener('resize', () => {
+                    if (acc.classList.contains('active')) {
+                        content.style.maxHeight = (content.scrollHeight + 30) + "px";
                     }
                 });
             }
@@ -64,20 +75,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenu = document.getElementById('mobileMenu');
     const body = document.body;
 
-    // Перевіряємо, чи є бургер (щоб не ламалось на сторінках без нього, хоча він в хедері)
     if (burgerBtn && mobileMenu) {
         burgerBtn.addEventListener('click', () => {
             burgerBtn.classList.toggle('active');
             mobileMenu.classList.toggle('active');
 
             if (mobileMenu.classList.contains('active')) {
-                body.style.overflow = 'hidden'; // Блокуємо скрол
+                body.style.overflow = 'hidden';
             } else {
-                body.style.overflow = ''; // Розблоковуємо
+                body.style.overflow = '';
             }
         });
 
-        // Закриття при кліку на посилання
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 burgerBtn.classList.remove('active');
