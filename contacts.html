@@ -5,45 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Контакти - ЛДЦ "СпиналоКі"</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="/img/logo/logo.svg">
 </head>
 <body>
 
 <load src="partials/header.html"/>
 
-<section class="section">
+<section class="section contacts-page">
     <div class="container">
-        <h1 class="section-title">Контакти та запис</h1>
 
-        <div class="contacts-wrapper">
-            <!-- Ліва колонка: Інфо -->
-            <div class="contact-box">
-                <div class="contact-row">
-                    <h4>Адреса клініки:</h4>
-                    <p>м. Харків, вул. [Впиши вулицю]</p>
-                </div>
-                <div class="contact-row">
-                    <h4>Телефон для запису:</h4>
-                    <p><a href="tel:+380990000000" style="color: var(--color-green);">+38 (099) 000-00-00</a></p>
-                </div>
-                <div class="contact-row">
-                    <h4>Графік роботи:</h4>
-                    <p>Пн-Пт: 08:00 - 20:00</p>
-                    <p>Сб: 09:00 - 15:00</p>
-                    <p style="color: #999;">Нд: Вихідний</p>
+        <div class="section-header">
+            <h1 class="section-title">Зв'яжіться з нами</h1>
+        </div>
+
+        <div class="contacts-top-wrapper">
+
+            <div class="contacts-info">
+
+                <div class="info-card">
+                    <div class="info-icon">📍</div>
+                    <div class="info-text">
+                        <h3>Адреса клініки</h3>
+                        <p>м. Харків, вул. Греківська, б 5</p>
+                        <a href="https://maps.app.goo.gl/RgfAAhGvaa26FKCY6" target="_blank" class="link-route">Прокласти маршрут →</a>
+                    </div>
                 </div>
 
-                <a href="tel:+380990000000" class="btn btn--green" style="width: 100%;">Зателефонувати</a>
+                <div class="info-card">
+                    <div class="info-icon">📞</div>
+                    <div class="info-text">
+                        <h3>Телефон</h3>
+                        <p><a href="tel:+380994298640" class="link-phone">099 429 8640</a></p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">🕒</div>
+                    <div class="info-text">
+                        <h3>Графік роботи</h3>
+                        <ul class="schedule-list">
+                            <li><span>Вівторок:</span> <strong>15:00 – 19:00</strong></li>
+                            <li><span>Середа:</span> <strong>15:00 – 19:00</strong></li>
+                            <li><span>П’ятниця:</span> <strong>14:00 – 19:00</strong></li>
+                            <li class="closed"><span>Інші дні:</span> Зачинено</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
-            <!-- Права колонка: Карта -->
-            <div class="map-frame">
-                <!-- Заміни цей iframe на реальний код з Google Maps -->
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d164153.5984324294!2d36.10603448686226!3d49.99450702720539!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4127a09f63ab0f8b%3A0x2d4c18681aa4be0a!2z0KXQsNGA0LrRltCyLCDQpdCw0YDQutGW0LLRgdGM0LrQsCDQvtCx0LvQsNGB0YLRjA!5e0!3m2!1suk!2sua!4v1700000000000!5m2!1suk!2sua" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d359.97838965899007!2d36.231069287686246!3d49.980716263721725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4127a123399978ed%3A0x400accd7b8fa04b8!2z0JvQlNCmICLQodC_0LjQvdCw0LvQvtCa0ZYi!5e0!3m2!1suk!2sua!4v1763554723373!5m2!1suk!2sua"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
+        </div>
+
+        <div class="booking-wrapper">
+            <h2 class="booking-title">Запис на прийом</h2>
+            <div class="booking-divider"></div>
+
+            <form action="#" method="POST" class="booking-form">
+                <div class="form-row-double">
+                    <input type="text" name="name" class="form-input" placeholder="Ваше ім'я*" required>
+                    <input type="tel" name="phone" class="form-input" placeholder="Ваш номер телефону*" required>
+                </div>
+
+                <div class="form-row-full">
+                    <textarea name="comment" class="form-input textarea" placeholder="Ваш коментар (необов'язково)"></textarea>
+                </div>
+
+                <div class="form-row-btn">
+                    <button type="submit" class="btn btn--green btn--wide">Записатися на прийом</button>
+                </div>
+            </form>
         </div>
 
     </div>
 </section>
+
 <load src="partials/footer.html"/>
 <script type="module" src="/src/main.js"></script>
 </body>

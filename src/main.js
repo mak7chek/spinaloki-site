@@ -87,3 +87,30 @@ accordions.forEach(acc => {
         }
     });
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const body = document.body;
+
+    burgerBtn.addEventListener('click', () => {
+        // Перемикаємо класи active
+        burgerBtn.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+
+        // Забороняємо скрол сайту, коли відкрите меню
+        if (mobileMenu.classList.contains('active')) {
+            body.style.overflow = 'hidden';
+        } else {
+            body.style.overflow = '';
+        }
+    });
+
+    // Закриваємо меню при кліку на посилання
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            burgerBtn.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            body.style.overflow = '';
+        });
+    });
+});
