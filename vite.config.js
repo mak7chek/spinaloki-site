@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
-import htmlInject from 'vite-plugin-html-inject';
+import inject from 'vite-plugin-html-inject';
 
 export default defineConfig({
     plugins: [
@@ -9,6 +9,7 @@ export default defineConfig({
     build: {
         rollupOptions: {
             input: {
+                // Тут ми пояснюємо Vite, де шукати всі наші сторінки
                 main: resolve(__dirname, 'index.html'),
                 contacts: resolve(__dirname, 'contacts.html'),
                 doctors: resolve(__dirname, 'doctors.html'),
