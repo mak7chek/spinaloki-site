@@ -356,49 +356,132 @@ a:hover { opacity: 0.8; }
   .accent-line { margin-bottom: 15px; }
 }
 
-/* --- Gallery --- */
+/* ========================================================================
+   7. ГАЛЕРЕЯ
+   ======================================================================== */
 .gallery-section { padding-top: 40px; }
 .section-header { text-align: center; max-width: 800px; margin: 0 auto 40px; }
 
+/* Обгортка для тіні та заокруглення */
 .carousel-wrapper {
-  max-width: 1000px; margin: 0 auto;
-  border-radius: var(--radius-card); overflow: hidden;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: var(--radius-card);
+  overflow: hidden;
   box-shadow: var(--shadow-card);
   position: relative;
 }
 
-.carousel-container { display: flex; transition: transform 0.5s ease-in-out; }
-.carousel-item {
-  flex: 0 0 100%; position: relative;
-  height: 500px; /* Висота для ПК */
-}
-.carousel-item img { width: 100%; height: 100%; object-fit: cover; }
-
-.carousel-nav {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  background: var(--color-green); color: #fff; border: none;
-  width: 40px; height: 40px; border-radius: 50%;
-  cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center;
-  transition: 0.3s; z-index: 5;
-}
-.carousel-nav:hover { background: var(--color-green-hover); transform: translateY(-50%) scale(1.1); }
-.carousel-nav.prev { left: 20px; }
-.carousel-nav.next { right: 20px; }
-
-.carousel-caption {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  background: rgba(45, 45, 45, 0.9); color: #fff;
-  padding: 15px 20px; font-size: 15px;
+/* Сам слайдер Swiper */
+.clinic-swiper {
+  width: 100%;
+  height: 500px;
 }
 
-/* --- Gallery Mobile --- */
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+:root {
+  --swiper-navigation-size: 40px !important;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  content: '' !important;
+  position: absolute !important; /* Абсолютне позиціонування всередині кнопки */
+
+  /* Ставимо геометричний центр квадрата рівно в центр кнопки */
+  top: 50% !important;
+  left: 50% !important;
+
+  width: 12px !important;
+  height: 12px !important;
+
+  border-top: 3px solid #ffffff !important;
+  border-right: 3px solid #ffffff !important;
+
+  font-family: inherit !important;
+  font-size: 0 !important;
+  margin: 0 !important;
+}
+
+/* Ефект при наведенні: стає менш прозорим і яскравішим */
+.swiper-button-next,
+.swiper-button-prev {
+  width: 50px !important;
+  height: 50px !important;
+  background-color: rgba(124, 181, 24, 0.8) !important; /* Напівпрозорий зелений */
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+
+  /* Важливо: прибираємо Flex, використовуємо позиціонування */
+  display: block !important;
+
+  /* Центруємо саму кнопку відносно слайдера */
+  top: 50% !important;
+  transform: translateY(-50%);
+  margin-top: 0 !important;
+
+  z-index: 10;
+  transition: all 0.3s ease;
+  color: transparent !important;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  transform: translateY(-50%) scale(1.1);
+  background-color: rgba(124, 181, 24, 1) !important; /* Непрозорий при наведенні */
+}
+/* --- МАЛЮЄМО СТРІЛКИ ТА ЦЕНТРУЄМО ЇХ --- */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  content: '' !important;
+  position: absolute !important; /* Абсолютне позиціонування всередині кнопки */
+
+  /* Ставимо геометричний центр квадрата рівно в центр кнопки */
+  top: 50% !important;
+  left: 50% !important;
+
+  width: 12px !important;
+  height: 12px !important;
+
+  border-top: 3px solid #ffffff !important;
+  border-right: 3px solid #ffffff !important;
+
+  font-family: inherit !important;
+  font-size: 0 !important;
+  margin: 0 !important;
+}
+
+/* СТРІЛКА ВПРАВО (>) */
+.swiper-button-next::after {
+  /* Зсуваємо трохи вліво (-65%), щоб візуально було по центру */
+  transform: translate(-65%, -50%) rotate(45deg) !important;
+}
+
+.swiper-button-prev::after {
+  /* Зсуваємо трохи вправо (-35%), щоб візуально було по центру */
+  transform: translate(-35%, -50%) rotate(-135deg) !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--color-green) !important;
+}
+
+/* Мобільний адаптив */
 @media (max-width: 768px) {
-  .carousel-item { height: 300px; } /* Зменшуємо висоту на моб */
-  .carousel-nav { width: 35px; height: 35px; font-size: 16px; }
-  .carousel-caption { font-size: 13px; padding: 10px 15px; }
+  .clinic-swiper { height: 300px; }
   .section-title { font-size: 28px; }
-}
 
+  /* Ховаємо кнопки на телефоні */
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none !important;
+  }
+}
 /* ========================================================================
    14. PRICES & PROGRAMS (Адаптивно і рівно)
    ======================================================================== */
