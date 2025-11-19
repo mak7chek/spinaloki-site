@@ -34,9 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // =========================================
-    // 2. АКОРДЕОН (Ціни)
-    // =========================================
+    // АКОРДЕОН (Ціни)
     const accordions = document.querySelectorAll('.accordion-item');
 
     if (accordions.length > 0) {
@@ -49,16 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     acc.classList.toggle('active');
 
                     if (acc.classList.contains('active')) {
-                        // ВИПРАВЛЕННЯ: Додаємо +20px (або 30px) про запас,
-                        // щоб нижній рядок тексту не обрізався
                         content.style.maxHeight = (content.scrollHeight + 30) + "px";
                     } else {
                         content.style.maxHeight = null;
                     }
                 });
 
-                // ЛАЙФХАК: Оновлюємо висоту при зміні розміру вікна (повороті телефону),
-                // інакше текст може знову обрізатись, якщо стане довшим
                 window.addEventListener('resize', () => {
                     if (acc.classList.contains('active')) {
                         content.style.maxHeight = (content.scrollHeight + 30) + "px";
@@ -68,9 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // =========================================
-    // 3. БУРГЕР-МЕНЮ
-    // =========================================
+    // БУРГЕР-МЕНЮ
     const burgerBtn = document.getElementById('burgerBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     const body = document.body;
